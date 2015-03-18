@@ -1,0 +1,28 @@
+{
+  "name": "hyperyun-mongomatcher",
+  "version": "0.0.0",
+  "description": "Simulate a mongo selector against a document and see if it evaluates 'true' or not",
+  "main": "mongoMatcher.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hyperyun/MongoMatcher.git"
+  },
+  "keywords": [
+    "mongodb"
+  ],
+  "author": {
+    "name": "Edward Miller"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Hyperyun/MongoMatcher/issues"
+  },
+  "homepage": "https://github.com/Hyperyun/MongoMatcher",
+  "readme": "MongoMatcher\n============\n\nRun mongo selector on an arbitrary javascript object to see if it is matched!\n\n###USAGE###\n\nFirst, import MongoMatcher using the `require` command. MongoMatcher has a dependency on LoDash\n\n    var mongoMatcher = require('./mongoMatcher.js');\n\nNow, you can instantiate a matcher for a given MongoDB selector object, like so:\n\n    var mySelector = {$and:[{foo:\"bar\"},{wham:\"bam\"}]}\n    var myMatcher = new mongoMatcher(mySelector);\n\nAfter you do this, you can see if a Javascript object would be matched by the MongoDB selector using the `discern` function\n\n\tvar willMatch = {foo:\"bar\",wham:\"bam\"}\n\tvar wontMatch = {foo:\"baz\",wham:\"bam\"}\n\n\tmyMatcher.discern(willMatch)\t//true\n\tmyMatcher.discern(wontMatch)\t//false\n\nAnd that's it! \n\n###LIMITATIONS###\n\nCurrently, MongoMatcher is meant only for MongoDB selectors (not modifiers) and does not support all keywords. Hopefully all the keywords will be supported in the future: feel free to contribute them! \n\nUnsupported operators are:\n\n * $type\n * $regex\n * $where\n * $text\n * $geoIntersects\n * $geoWithin\n * $nearSphere\n * $near\n * $\n * $elemMatch\n * $meta\n * $slice\n",
+  "readmeFilename": "README.md",
+  "_id": "hyperyun-mongomatcher@0.0.0",
+  "_from": "hyperyun-mongomatcher@*"
+}
